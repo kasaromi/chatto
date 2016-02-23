@@ -1,7 +1,9 @@
 var http = require('http');
 var port = 8000;
 var fs = require('fs');
-var redisFunctions = require('./redis.js');
+var server = http.createServer(handler).listen(port);
+var io = require('socket.io')(server);
+// var redisFunctions = require('./redis.js');
 
 function handler(req, res){
     var url = req.url;
@@ -27,16 +29,21 @@ function handler(req, res){
             }
         });
     }
-    else if( url.indexOf(':')>-1){
-        var total = url.split('/')[1].split(':');
-        var room = total[0];
-        var user = total[1];
-        var message = total[2];
-        redisFunctions.addToDB(room, user, message);
-    }
+    // else if( url.indexOf(':')>-1){
+    //     var total = url.split('/')[1].split(':');
+    //     var room = total[0];
+    //     var user = total[1];
+    //     var message = total[2];
+    //     redisFunctions.addToDB(room, user, message);
+    // }
 }
 
-var server = http.createServer(handler).listen(port);
+io.on('connection', function(socket){
+    socket.on('chat message', function(msg){
+        io.emit('chat message', msg);
+    });
+});
+
 console.log('Server is listening on http://localhost:' + port);
 
 module.exports = {
