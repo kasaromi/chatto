@@ -2,9 +2,11 @@
   "name": "chatto",
   "version": "1.0.0",
   "description": "Socket.io chat room",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape ./test/*",
+    "coverage": "istanbul cover tape ./test/*",
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,16 @@
   "bugs": {
     "url": "https://github.com/kasaromi/chatto/issues"
   },
-  "homepage": "https://github.com/kasaromi/chatto#readme"
+  "homepage": "https://github.com/kasaromi/chatto#readme",
+  "devDependencies": {
+    "concat-stream": "^1.5.1",
+    "hyperquest": "^1.2.0",
+    "istanbul": "^0.4.2",
+    "shot": "^3.0.1",
+    "tape": "^4.4.0",
+    "wrapping-tape": "0.0.3"
+  },
+  "dependencies": {
+    "redis": "^2.4.2"
+  }
 }
