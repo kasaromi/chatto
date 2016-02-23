@@ -6,11 +6,13 @@
     </head>
     <body>
         <h1>Chatto</h1>
+
         <ul id="messages"></ul>
         <form action="">
-            <input id="m" autocomplete="off" /><button>Send</button>
+            <input id="m" placeholder="Type your message..." autocomplete="off" /><button>Send</button>
         </form>
         <script src="/socket.io/socket.io.js"></script>
         <script src="index.js"></script>
+        <div id="chat"></div>
     </body>
 </html>
