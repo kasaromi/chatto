@@ -1,22 +1,25 @@
+var http = require('http');
 var tape = require('tape');
 var server = require('../server/server.js');
-var hyperquest = require('hyperquest');
-var concat = require('concat-stream');
-var hostUrl = 'http://localhost:8000/';
+var shot = require('shot');
 
-tape('#1 check if server is running', function(t) {
-    hyperquest.get(hostUrl, function(error, response) {
-        t.equal(response.statusCode, 200, "Assert server is running");
+tape('Does server respond successfully?', function(t) {
+    shot.inject(server.handler, {method: 'GET', url:'/'}, function(res) {
+        t.equal(res.statusCode, 200, 'Server responds!');
         t.end();
     });
 });
 
-// tape('#2 fetch the index.html', function(t) {
-//     hyperquest.get(hostUrl, function(error, response) {
-//         response.pipe(concat(function(payload){
-//             t.ok(payload.toString('utf8').match('<!DOCTYPE html>'), 'check for DOCTYPE');
-//             t.ok(payload.toString('utf8').match('<html>'), 'check for HTML tag');
-//             t.end();
-//         }));
-//     });
-// });
+tape('Does the server read the index.html file', function(t){
+    shot.inject(server.handler, {method: 'Get', url:'http://localhost:8000'}, function(res){
+        t.notEqual(res.payload.indexOf("<!DOCTYPE html>"), -1, 'server returns html page');
+        t.end();
+    });
+});
+
+
+
+tape("teardown", function(t){
+    server.server.close();
+    t.end();
+});

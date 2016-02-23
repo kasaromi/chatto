@@ -22,6 +22,7 @@
     "concat-stream": "^1.5.1",
     "hyperquest": "^1.2.0",
     "istanbul": "^0.4.2",
+    "shot": "^3.0.1",
     "tape": "^4.4.0",
     "wrapping-tape": "0.0.3"
   },
