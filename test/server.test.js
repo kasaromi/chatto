@@ -17,8 +17,6 @@ tape('Does the server read the index.html file', function(t){
     });
 });
 
-
-
 tape("teardown", function(t){
     server.server.close();
     t.end();
