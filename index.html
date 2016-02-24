@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="style.css" charset="utf-8">
         <meta charset="utf-8">
         <title>Chatto</title>
     </head>
     <body>
         <h1>Chatto</h1>
+
+        <div id="container3">
+
+            <div id="chat">
+            </div><!-- end div chatroom -->
+
+            <textarea name="name" rows="3" cols="140"></textarea>
+            <button type="button" name="button">Send</button>
+        </div><!-- end div container -->
+        <script type="text/javascript" src="index.js"></script>
 
         <ul id="messages"></ul>
         <form action="">
@@ -13,6 +24,35 @@
         </form>
         <script src="/socket.io/socket.io.js"></script>
         <script src="index.js"></script>
-        <div id="chat"></div>
     </body>
 </html>
+
+<!--
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" charset="utf-8">
+        <meta charset="utf-8">
+        <title>Chatto</title>
+    </head>
+    <body>
+        <h1>Chatto</h1>
+
+        <div id="container" class="grid-container">
+
+            <div id="chatroom">
+                <h1>HO</h1>
+            </div>
+
+            <!-- <div id="textarea">
+                <textarea name="name" rows="8" cols="40">ioyuhgoiyigtiytutyj</textarea>
+                <input type="text" id='message' placeholder="Type your message...">
+                <button id='button'>Send</button>
+            </div>
+
+        </div><!-- end div container -->
+        <!-- <script type="text/javascript" src="index.js"></script>
+
+
+    </body>
+</html>  -->
