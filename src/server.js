@@ -5,6 +5,7 @@ var server = http.createServer(handler);
 var io = require('socket.io')(server);
 var redisFunctions = require('./redis.js');
 
+
 function handler(req, res){
     var url = req.url;
     console.log(url);
@@ -28,6 +29,19 @@ function handler(req, res){
                 res.writeHead(200, {'Content-Type': 'text/' + ext});
                 res.end(file);
             }
+        });
+    }
+    else if(url.match('/msg')){
+        var x = url.split('/msg')[1].split(':');
+        var name = x[0];
+        var message = x[1];
+        redisFunctions.setData(name, message);
+    }
+    else if(url.match('/display')){
+        redisFunctions.getData(function(reply){
+            var data = JSON.stringify(reply);
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.end(data);
         });
     }
 }
