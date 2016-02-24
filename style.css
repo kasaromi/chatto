@@ -1,0 +1,131 @@
+#container {
+    border: 5px;
+    border-color: red;
+    background: red;
+    position: relative;
+}
+
+#chatroom {
+    border: 5px;
+    border-color: red;
+    background: purple;
+    position: absolute;
+    width: 64%;
+    margin-left: 18%;
+    margin-top: 0;
+    height: 800px;
+}
+
+#textarea {
+    border: 5px;
+    border-color: red;
+    background: green;
+
+}
+
+body {
+    background-color: ;
+}
+
+@media only screen and (max-width: 400px){
+  ul {
+    margin-bottom: 0px;
+  }
+
+}
+
+@media only screen and (min-width: 700px) {
+  #background {
+      left: 300px;
+      width: 70%;
+      position: relative;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  #background {
+      left: 400px;
+      width: 70%;
+      position: relative;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  #background {
+      left: 450px;
+      width: 70%;
+      position: relative;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  #background {
+      left: 500px;
+      width: 70%;
+      position: relative;
+  }
+}
+
+@media only screen and (max-width: 849px) {
+  #search {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (min-width: 850px) {
+
+  #possibleWords {
+    width: 100%;
+  }
+
+  #possibleWords ul {
+    width: 100%;
+  }
+
+  #possibleWords li {
+    height: 99px;
+    width: 397px;
+  }
+
+  #definition {
+    width: 600px;
+  }
+
+}
+/*set width of entire grid*/
+
+.grid-container {
+
+  width: 100%;
+  text-align: center;
+}
+
+/*set width and height properties (and min/max properties) to include content, padding and border*/
+
+.grid-container * {
+  box-sizing: border-box;
+}
+
+/*ensure columns in one row do not overflow into the next*/
+
+.row:before, .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* end grid system */
+
+#chat {
+    height: 400px;
+    background-color: orange;
+}
+#container3 {
+    margin: 30px 10% 20px 10%;
+}
+textarea {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+}
