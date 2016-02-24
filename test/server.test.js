@@ -1,5 +1,5 @@
 var tape = require('tape');
-var server = require('../server/server.js');
+var server = require('../src/server.js');
 var shot = require('shot');
 var fs = require('fs');
 
