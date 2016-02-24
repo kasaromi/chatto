@@ -1,6 +1,7 @@
 var tape = require('tape');
 var server = require('../src/server.js');
 var shot = require('shot');
+var redis = require('../src/redis.js');
 var fs = require('fs');
 
 tape('Does server respond successfully?', function(t) {
@@ -24,9 +25,4 @@ tape('Other file types can be returned successfully', function(t) {
             t.end();
         });
     });
-});
-
-tape("teardown", function(t){
-    server.server.close();
-    t.end();
 });
