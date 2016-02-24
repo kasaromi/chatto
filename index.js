@@ -1,16 +1,25 @@
 var socket = io();
 
-document.getElementsByTagName('form')[0].addEventListener('submit', function(k){
+// document.getElementsByTagName('form')[0].addEventListener('submit', function(k){
+//     k.preventDefault();
+//     socket.emit('chat message', document.getElementById('m').value);
+//     document.getElementById('m').value='';
+// });
+
+var username = document.getElementById('username').value;
+var msg = document.getElementById('mess').value;
+
+document.getElementById('mess').addEventListener('submit', function(k){
     k.preventDefault();
-    socket.emit('chat message', document.getElementById('m').value);
-    document.getElementById('m').value='';
+    socket.emit('chat message', username + ': ' + msg);
+    document.getElementById('mess').value='';
 });
 
 socket.addEventListener('chat message', function(msg){
-    var noder = document.createTextNode(msg);
-    var node = document.createElement('li');
-    node.appendChild(noder);
-    document.getElementById('messages').appendChild(node);
+    var msgText = document.createTextNode(msg);
+    var msgOnScreen = document.createElement('li');
+    msgOnScreen.appendChild(msgText);
+    document.getElementById('messageContainer').appendChild(msgOnScreen);
 
 });
 
