@@ -1,8 +1,8 @@
 var redis = require('redis');
 var client = redis.createClient();
 
-function addData(input){
-    client.set('data', input);
+function setData(x, y){
+    client.hmset('data', 'name' + Date.now(), x, 'message' + Date.now(), y);
 }
 
 function getData(callback){
@@ -16,9 +16,5 @@ function getData(callback){
 
 module.exports = {
     getData: getData,
-    addData: addData,
-};
-
-module.exports = {
-    addData: addData
+    setData : setData
 };
