@@ -1,10 +1,7 @@
 var http = require('http');
 var port = 8000;
 var fs = require('fs');
-var server = http.createServer(handler);
-var io = require('socket.io')(server);
 var redisFunctions = require('./redis.js');
-
 
 function handler(req, res){
     var url = req.url;
@@ -46,15 +43,13 @@ function handler(req, res){
     }
 }
 
-server.listen(port);
+var server = http.createServer(handler).listen(port);
 
 console.log('Server is listening on http://localhost:' + port);
 
 module.exports = {
     handler: handler,
-    server: server,
-    port: port,
-    io: io
+    server: server
 };
 
 var socket = require('./socket.js');

@@ -16,5 +16,6 @@ function getData(callback){
 
 module.exports = {
     getData: getData,
-    setData : setData
+    setData : setData,
+    client : client
 };
