@@ -6,18 +6,26 @@
         <title>Chatto</title>
     </head>
     <body>
-        <h1>Chatto</h1>
-        <div class="show" id="user-container">
+
+        <h1 id="chatto">Chatto</h1>
+
+
+        <div id="user-container">
             <input id="username" type="text" name="name" value="" placeholder="type username">
             <button id="login" type="button" name="button">login</button>
         </div>
 
         <div class="hide" id="window-container">
-            <div id="messageContainer">
+
+
+            <div id="messageContainer" class="span_4_of_12"></div>
+
+            <div id="sendbox">
+                <input id="mess" type="text" name="name" value="" placeholder="type message">
+                <button id="send" type="button" name="button">Send</button>
             </div>
-            <input id="mess" type="text" name="name" value="" placeholder="type message">
-            <button id="send" type="button" name="button">send</button>
-            <div id="usersbox" class="">
+
+            <div id="usersbox">
                 <ul>
                     <li>User 1</li>
                     <li>User 3</li>
@@ -25,8 +33,11 @@
                     <li>User 5</li>
                 </ul>
             </div>
+
         </div>
+
         <script src="/socket.io/socket.io.js"></script>
         <script src="index.js"></script>
+
     </body>
 </html>

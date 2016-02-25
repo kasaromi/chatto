@@ -53,16 +53,28 @@ document.getElementById('send').addEventListener('click', function(k){
 });
 
 document.getElementById('login').addEventListener('click', function() {
-    document.getElementById('user-container').className = 'hide';
-    document.getElementById('window-container').className = 'show';
+    document.getElementById('user-container').classList.remove('show');
+    document.getElementById('user-container').classList.add('hide');
+    document.getElementById('window-container').classList.remove('hide');
+    document.getElementById('window-container').classList.add('show');
 
 });
 
+var scrollContainer = document.getElementById('messageContainer');
+function autoScroll(container) {
+    scrollContainer.scrollTop = scrollContainer.scrollHeight;
+}
+
 socket.addEventListener('chat message', function(msg){
-    var msgText = document.createTextNode(msg);
+    var d = new Date();
+    var h = d.getHours();
+    var m = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
+    var time = h + ':' + m;
+    var msgText = document.createTextNode(time + " " + msg);
     var msgOnScreen = document.createElement('li');
     msgOnScreen.appendChild(msgText);
     document.getElementById('messageContainer').appendChild(msgOnScreen);
+    autoScroll(scrollContainer);
 });
 
 // ------- ^^ Jasmine ^^ ------
