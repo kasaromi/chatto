@@ -32,10 +32,10 @@ function handler(req, res){
         var x = url.split('/msg')[1].split(':');
         var name = x[0];
         var message = x[1];
-        redisFunctions.setData(name, message);
+        redisFunctions.setData('data', name, message);
     }
     else if(url.match('/display')){
-        redisFunctions.getData(function(reply){
+        redisFunctions.getData('data', function(reply){
             var data = JSON.stringify(reply);
             res.writeHead(200, {'Content-Type': 'text/html'});
             res.end(data);
