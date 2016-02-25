@@ -35,6 +35,12 @@ document.getElementById('send').addEventListener('click', function(k){
     document.getElementById('mess').value='';
 });
 
+document.getElementById('login').addEventListener('click', function() {
+    document.getElementById('user-container').className = 'hide';
+    document.getElementById('window-container').className = 'show';
+
+});
+
 socket.addEventListener('chat message', function(msg){
     var msgText = document.createTextNode(msg);
     var msgOnScreen = document.createElement('li');
