@@ -30,15 +30,15 @@ function print(unparsedData){
     var data = JSON.parse(unparsedData);
     var length = Object.keys(data).length/2;
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    for(i=1;i<=length;i++){
+    for(var i=1; i<=length; i++){
         var date = new Date(format(i, 'time', data));
         var day = date.getDate().toString();
         var month = months[date.getMonth()].toString();
-        var hours = date.getHours().toString();
-        var mins = date.getMinutes().toString();
+        var hours = date.getHours() <= 9 ? "0" + date.getHours().toString() : date.getHours().toString();
+        var mins = date.getMinutes() <= 9 ? "0" + date.getMinutes().toString() : date.getMinutes().toString();
         var concatedDate = day + " " + month + " - " + hours + ":" + mins;
-        var name = format(i, 'name', data);
-        var message = format(i, 'message', data);
+        var name = format(i, 'name', data).replace(/["%20"]/g," ");
+        var message = format(i, 'message', data).replace(/["%20"]/g," ");
         var total = concatedDate + " " + name + ": " + message;
         var node = document.createTextNode(total);
         var other = document.createElement('div');
