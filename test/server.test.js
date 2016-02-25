@@ -26,3 +26,7 @@ tape('Other file types can be returned successfully', function(t) {
         });
     });
 });
+
+tape.onFinish(function(){
+	server.server.close();
+});
