@@ -27,9 +27,7 @@ tape('Should be able to broadcast messages', function(t) {
     var socketURL = 'http://localhost:8000';
 
     var checkMessage = function(client) {
-        console.log('gets here');
         client.on('chat message', function(msg) {
-            console.log('here too?');
             t.equals(msg, message, 'message has been received by client ');
             client.disconnect();
             messages++;
@@ -51,7 +49,6 @@ tape('Should be able to broadcast messages', function(t) {
             checkMessage(client3);
 
             client3.on('connect', function(data) {
-                console.log('about to send message!');
                 client2.emit('chat message', message);
             });
         });
