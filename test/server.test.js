@@ -27,6 +27,25 @@ tape('Other file types can be returned successfully', function(t) {
     });
 });
 
+tape('msg url splits to give name and message', function(t) {
+    var testURL = '/msgrob:heychika';
+    var actualName = 'rob';
+    var actualMsg = 'heychika';
+    var x = testURL.split('/msg')[1].split(':');
+    var name = x[0];
+    var message = x[1];
+    t.equal(actualName, name, 'Name ok');
+    t.equal(actualMsg, message, 'Message ok');
+    t.end();
+});
+
+tape('display url shows previous messages', function(t) {
+    shot.inject(server.handler, {method: 'post', url: '/display'}, function(res) {
+        t.ok(res.payload.indexOf('null') > -1, 'Messages returned');
+        t.end();
+    });
+});
+
 tape.onFinish(function(){
 	server.server.close();
 });
