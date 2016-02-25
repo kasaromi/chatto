@@ -47,22 +47,38 @@ function print(unparsedData){
     }
 }
 
-document.getElementById('send').addEventListener('click', function(k){
+document.getElementById('send').addEventListener('click', function(k) {
+    k.preventDefault();
+    getUserAndMsg();
+});
+
+document.getElementById('mess').addEventListener('keypress', function(e) {
+    if (e.keyCode === 13) getUserAndMsg();
+});
+
+function getUserAndMsg(){
     var username = document.getElementById('username').value;
     var msg = document.getElementById('mess').value;
-    k.preventDefault();
     socket.emit('chat message', username + ': ' + msg);
     sendMessage(username, msg);
     document.getElementById('mess').value='';
-});
+}
 
 document.getElementById('login').addEventListener('click', function() {
+    hideUserShowChat();
+});
+
+document.getElementById('username').addEventListener('keypress', function(e) {
+    if (e.keyCode === 13) hideUserShowChat();
+});
+
+function hideUserShowChat() {
     document.getElementById('user-container').classList.remove('show');
     document.getElementById('user-container').classList.add('hide');
     document.getElementById('window-container').classList.remove('hide');
     document.getElementById('window-container').classList.add('show');
-
-});
+    document.getElementById('mess').focus();
+}
 
 var scrollContainer = document.getElementById('messageContainer');
 function autoScroll(container) {
