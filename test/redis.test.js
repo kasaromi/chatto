@@ -43,7 +43,6 @@ tests.module1('test setData function', function(t){
     expected[msg] = message;
 	redisFunctions.getData('data', function(output) {
         var reply = output;
-        console.log(reply);
 		t.deepEqual(reply, expected, 'user has been added to db!');
 		client.flushdb();
 		t.end();
