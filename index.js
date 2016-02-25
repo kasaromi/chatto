@@ -26,21 +26,25 @@ function format(number, type, input){
 }
 
 //data = {"name145641721327":"jk","message145641721327":"hi"};
-function print(data){
+function print(unparsedData){
+    var data = JSON.parse(unparsedData);
+    var length = Object.keys(data).length/2;
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    var formattedDate = format(1, 'time', JSON.parse(data));
-    var date = new Date(formattedDate);
-    var day = date.getDate().toString();
-    var month = months[date.getMonth()].toString();
-    var hours = date.getHours().toString();
-    var mins = date.getMinutes().toString();
-    var concatedDate = day + " " + month + " - " + hours + ":" + mins;
-    console.log(concatedDate);
-    var string = document.createTextNode(concatedDate);
-    var node = string;
-    var other = document.createElement('div');
-    other.appendChild(node);
-    document.getElementById('messageContainer').appendChild(other);
+    for(i=1;i<=length;i++){
+        var date = new Date(format(i, 'time', data));
+        var day = date.getDate().toString();
+        var month = months[date.getMonth()].toString();
+        var hours = date.getHours().toString();
+        var mins = date.getMinutes().toString();
+        var concatedDate = day + " " + month + " - " + hours + ":" + mins;
+        var name = format(i, 'name', data);
+        var message = format(i, 'message', data);
+        var total = concatedDate + " " + name + ": " + message;
+        var node = document.createTextNode(total);
+        var other = document.createElement('div');
+        other.appendChild(node);
+        document.getElementById('messageContainer').appendChild(other);
+    }
 }
 
 document.getElementById('send').addEventListener('click', function(k){
