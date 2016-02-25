@@ -33,8 +33,12 @@ tests.module1('test can write list to db', function(t) {
 tests.module1('test setData function', function(t){
     var username = 'rob';
 	var message = 'Hello World!';
+    var name = "name" + Date.now();
+    var msg = 'message' + Date.now();
 	redisFunctions.setData('data', username, message);
-	var expected = {name: 'rob', message: 'Hello World!'};
+    var expected = {};
+    expected[name] = username;
+    expected[msg] = message;
 	redisFunctions.getData('data', function(reply) {
 		t.deepEqual(reply, expected, 'user has been added to db!');
 		client.flushdb();
