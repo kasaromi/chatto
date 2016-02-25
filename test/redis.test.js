@@ -45,4 +45,4 @@ tests.module1('test setData function', function(t){
 // tests.module1('teardown', function(t) {
 // 	redisFunctions.client.end();
 // 	t.end();
-// });
+// }); ------ This is to close the server when running just this file
