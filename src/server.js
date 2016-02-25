@@ -1,7 +1,8 @@
 var http = require('http');
-var port = 8000;
+var port = process.env.PORT || 8000;
 var fs = require('fs');
 var redisFunctions = require('./redis.js');
+var env = require('env2')('./config.env');
 
 function handler(req, res){
     var url = req.url;
