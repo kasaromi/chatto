@@ -1,5 +1,31 @@
 var socket = io();
 
+// ^^ socket stuff ^^
+
+// ------ for Jasmine -------
+
+//we can get things more easliy from the object with this function
+// number is the message number, type can be: time, name and message and input is the inputted object
+function format(number, type, input){
+    if(type === 'time'){
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        date = new Date(Object.keys(input)[(number - 1) * 2].split('name')[1] * 1000);
+        return [date.getDate(), months[date.getMonth()], date.getHours(), date.getMinutes()];
+    }
+    else if(type === 'name'){
+        x = Object.keys(input).map(function (key){
+            return input[key];
+        });
+        return x[(number -1) * 2];
+    }
+    else if(type === 'message'){
+        x = Object.keys(input).map(function (key){
+            return input[key];
+        });
+        return x[(number -1) * 2 + 1];
+    }
+}
+
 document.getElementById('send').addEventListener('click', function(k){
     var username = document.getElementById('username').value;
     var msg = document.getElementById('mess').value;
@@ -16,6 +42,7 @@ socket.addEventListener('chat message', function(msg){
     document.getElementById('messageContainer').appendChild(msgOnScreen);
 });
 
+// ------- ^^ Jasmine ^^ ------
 
 var request = new XMLHttpRequest();
 
