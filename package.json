@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "tape ./test/*",
-    "coverage": "istanbul cover tape ./test/*",
+    "coverage": "istanbul cover tape ./test/* && codecov",
     "start": "nodemon src/server.js"
   },
   "repository": {
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/kasaromi/chatto#readme",
   "devDependencies": {
+    "codecov": "^1.0.1",
     "concat-stream": "^1.5.1",
     "istanbul": "^0.4.2",
     "shot": "^3.0.1",
