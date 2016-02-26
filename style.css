@@ -16,7 +16,7 @@ li, h2, p{
     list-style-type: none;
     font-family: 'Arvo', serif;
     color: #566270;
-
+    padding: 0.2%;
 }
 
 
@@ -43,6 +43,7 @@ body {
 }
 
 #messageContainer {
+    padding: 1%;
     float: left;
     width: calc(100% - 400px);
     height: 400px;

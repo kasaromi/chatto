@@ -41,7 +41,7 @@ function print(unparsedData){
         var message = format(i, 'message', data).replace(/["%20"]/g," ");
         var total = concatedDate + " " + name + ": " + message;
         var node = document.createTextNode(total);
-        var other = document.createElement('div');
+        var other = document.createElement('li');
         other.appendChild(node);
         document.getElementById('messageContainer').appendChild(other);
     }
@@ -86,11 +86,14 @@ function autoScroll(container) {
 }
 
 socket.addEventListener('chat message', function(msg){
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var d = new Date();
-    var h = d.getHours();
-    var m = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
-    var time = h + ':' + m;
-    var msgText = document.createTextNode(time + " " + msg);
+    var day = d.getDate();
+    var month = months[d.getMonth()];
+    var hours = d.getHours() < 10 ? "0" + d.getHours() : d.getHours();
+    var mins = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
+    var time = hours + ':' + mins;
+    var msgText = document.createTextNode(day + " " + month + " - " + time + " " + msg);
     var msgOnScreen = document.createElement('li');
     msgOnScreen.appendChild(msgText);
     document.getElementById('messageContainer').appendChild(msgOnScreen);
