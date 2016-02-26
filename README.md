@@ -1,7 +1,3 @@
-# Chatto
-
-[Use Chatto here](http://kasaromi-chatto.herokuapp.com/). Log in with your
-username of choice, and start messaging!
 
 ![](https://travis-ci.org/kasaromi/chatto.svg?branch=master)
 [![Codecrystal](https://img.shields.io/badge/code-crystal-5CB3FF.svg)](http://codecrystal.herokuapp.com/crystalise/kasaromi/chatto/master)
@@ -10,9 +6,43 @@ username of choice, and start messaging!
 [![Issue Count](https://codeclimate.com/repos/56cc4edcafbada638e007c7f/badges/c91bce951f2025bb637d/issue_count.svg)](https://codeclimate.com/repos/56cc4edcafbada638e007c7f/feed)
 [![codecov.io](https://codecov.io/github/kasaromi/chatto/coverage.svg?branch=master)](https://codecov.io/github/kasaromi/chatto?branch=master)
 
-This is a chat application that updates in real time.
+# Chatto
+
+A real time chat application.
 
 ![](https://cloud.githubusercontent.com/assets/15983736/13251298/33da2638-da27-11e5-8f9a-903f8667530a.png)
+
+### Accessing Chatto
+
+[Use Chatto here](http://kasaromi-chatto.herokuapp.com/). Log in with your
+username of choice, and start messaging!
+
+You can also access Chatto by cloning this repo and using
+
+```
+npm install
+```
+
+In your terminal type
+
+```
+npm run start
+```
+
+This will start your server. Open a second tab in your terminal to start up redis with the command
+
+```
+redis-server
+```
+
+You can also communicate with Redis by opening a third tab in your terminal and typing
+
+```
+redis-cli
+```
+
+Finally, open up http://localhost:8000 to try it out yourself!
+
 
 ### Implementation
 
@@ -43,22 +73,27 @@ This is a chat application that updates in real time.
 
 When a user joins a chat room they can login/sign up by choosing a username
 
-This username will be linked to their messages for when they post them - both in the dom and in our database
+This username will be linked to their messages for when they post them - both
+in the dom and in our database
 
 ![](https://cloud.githubusercontent.com/assets/15983736/13268390/218639b0-da7a-11e5-9b66-9ea31ffe2c0c.png)
 
 ### When a user logs in
 
-When they click submit for loggin in, the name be sent to the server which will store this in the database
-It will also initiate socket.io to display 'user' has joined Chatto.
+When they click submit for loggin in, the name be sent to the server which will
+store this in the database. It will also initiate socket.io to display 'user'
+has joined Chatto.
 
-This submit will also retrieve the entire database for all messages and all current users useing a xhr request
+This submit will also retrieve the entire database for all messages and all
+current users using a XHR request
 
 ![](https://cloud.githubusercontent.com/assets/15983736/13269233/9d32ff18-da7e-11e5-9435-f77c9517651b.png)
 
-This will be appended to the chatbox div in the dom with the messages that match your username on the left and all other usernames on the right
+This will be appended to the chatbox div in the dom with the messages that match
+your username on the left and all other usernames on the right
 
-We will then rely on socket.io to feed them live chat from all users and live information for when users connect
+We will then rely on socket.io to feed them live chat from all users and live
+information for when users connect
 
 ### When a user sends a message
 
