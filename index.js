@@ -1,9 +1,5 @@
 var socket = io();
 
-// ^^ socket stuff ^^
-
-// ------ for Jasmine -------
-
 //we can get things more easliy from the object with this function
 // number is the message number, type can be: time, name and message and input is the inputted object
 function format(number, type, input){
@@ -25,7 +21,6 @@ function format(number, type, input){
     }
 }
 
-//data = {"name145641721327":"jk","message145641721327":"hi"};
 function print(unparsedData){
     var data = JSON.parse(unparsedData);
     var length = Object.keys(data).length/2;
@@ -114,10 +109,6 @@ function loadData(){
         if(request.readyState === 4 && request.status === 200){
             var data = request.responseText;
             print(data);
-            // var node = document.createTextNode(data);
-            // var other = document.createElement('div');
-            // other.appendChild(node);
-            // document.getElementById('messageContainer').appendChild(other);
         }
     };
     request.open('get', '/display');
