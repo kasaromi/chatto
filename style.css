@@ -8,10 +8,21 @@
 
 #chatto {
     margin-left: 100px;
+    font-family: 'Arvo', serif;
+    color: #566270;
 }
 
-li {
+li, h2, p{
     list-style-type: none;
+    font-family: 'Arvo', serif;
+    color: #566270;
+    padding: 0.2%;
+}
+
+
+
+body {
+    background-color: #E0E3DA;
 }
 
 /*  GO FULL WIDTH BELOW 480 PIXELS */
@@ -26,22 +37,21 @@ li {
     float: right;
     width: 150px;
     height: 400px;
-    background-color: blue;
+    background-color: #A593E0;
     margin-right: 100px;
-    border: darkgrey 2px solid;
-    border-radius: 30px;
+    border-radius: 20px;
 }
 
 #messageContainer {
+    padding: 1%;
     float: left;
     width: calc(100% - 400px);
     height: 400px;
-    background-color: orange;
+    background-color: #FFFFF3;
     position: relative;
     overflow-y: scroll;
-    border: darkgrey 2px solid;
     margin-left: 100px;
-    border-radius: 30px;
+    border-radius: 20px;
 }
 
 #sendbox {
@@ -57,11 +67,15 @@ li {
 input[type="text"] {
   padding: 10px;
   border: none;
-  border-bottom: solid 2px #c9c9c9;
+  border-bottom: solid 2px #A593E0;
   transition: border 0.3s;
   width: 715px;
+  font-family: 'Arvo', serif;
+  border-radius: 20px;
 }
 input[type="text"]:focus,
 input[type="text"].focus {
-  border-bottom: solid 2px #969696;
+  border-bottom: solid 2px #E0E3DA;
+  font-family: 'Arvo', serif;
+  border-radius: 20px;
 }

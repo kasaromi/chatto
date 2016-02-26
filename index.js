@@ -41,28 +41,44 @@ function print(unparsedData){
         var message = format(i, 'message', data).replace(/["%20"]/g," ");
         var total = concatedDate + " " + name + ": " + message;
         var node = document.createTextNode(total);
-        var other = document.createElement('div');
+        var other = document.createElement('li');
         other.appendChild(node);
         document.getElementById('messageContainer').appendChild(other);
     }
 }
 
-document.getElementById('send').addEventListener('click', function(k){
+document.getElementById('send').addEventListener('click', function(k) {
+    k.preventDefault();
+    getUserAndMsg();
+});
+
+document.getElementById('mess').addEventListener('keypress', function(e) {
+    if (e.keyCode === 13) getUserAndMsg();
+});
+
+function getUserAndMsg(){
     var username = document.getElementById('username').value;
     var msg = document.getElementById('mess').value;
-    k.preventDefault();
     socket.emit('chat message', username + ': ' + msg);
     sendMessage(username, msg);
     document.getElementById('mess').value='';
-});
+}
 
 document.getElementById('login').addEventListener('click', function() {
+    hideUserShowChat();
+});
+
+document.getElementById('username').addEventListener('keypress', function(e) {
+    if (e.keyCode === 13) hideUserShowChat();
+});
+
+function hideUserShowChat() {
     document.getElementById('user-container').classList.remove('show');
     document.getElementById('user-container').classList.add('hide');
     document.getElementById('window-container').classList.remove('hide');
     document.getElementById('window-container').classList.add('show');
-
-});
+    document.getElementById('mess').focus();
+}
 
 var scrollContainer = document.getElementById('messageContainer');
 function autoScroll(container) {
@@ -70,11 +86,14 @@ function autoScroll(container) {
 }
 
 socket.addEventListener('chat message', function(msg){
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var d = new Date();
-    var h = d.getHours();
-    var m = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
-    var time = h + ':' + m;
-    var msgText = document.createTextNode(time + " " + msg);
+    var day = d.getDate();
+    var month = months[d.getMonth()];
+    var hours = d.getHours() < 10 ? "0" + d.getHours() : d.getHours();
+    var mins = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
+    var time = hours + ':' + mins;
+    var msgText = document.createTextNode(day + " " + month + " - " + time + " " + msg);
     var msgOnScreen = document.createElement('li');
     msgOnScreen.appendChild(msgText);
     document.getElementById('messageContainer').appendChild(msgOnScreen);
