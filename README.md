@@ -4,7 +4,6 @@
 [![Code Climate](https://codeclimate.com/repos/56cc4edcafbada638e007c7f/badges/c91bce951f2025bb637d/gpa.svg)](https://codeclimate.com/repos/56cc4edcafbada638e007c7f/feed)
 [![Test Coverage](https://codeclimate.com/repos/56cc4edcafbada638e007c7f/badges/c91bce951f2025bb637d/coverage.svg)](https://codeclimate.com/repos/56cc4edcafbada638e007c7f/coverage)
 [![Issue Count](https://codeclimate.com/repos/56cc4edcafbada638e007c7f/badges/c91bce951f2025bb637d/issue_count.svg)](https://codeclimate.com/repos/56cc4edcafbada638e007c7f/feed)
-[![codecov.io](https://codecov.io/github/kasaromi/chatto/coverage.svg?branch=master)](https://codecov.io/github/kasaromi/chatto?branch=master)
 
 # Chatto
 
