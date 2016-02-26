@@ -4,7 +4,7 @@
   "description": "Socket.io chat room",
   "main": "server.js",
   "scripts": {
-    "test": "tape ./test/*",
+    "test": "istanbul cover tape ./test/*",
     "coverage": "istanbul cover tape ./test/* && codecov",
     "start": "nodemon src/server.js"
   },
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/kasaromi/chatto#readme",
   "devDependencies": {
+    "codeclimate-test-reporter": "^0.3.1",
     "codecov": "^1.0.1",
     "concat-stream": "^1.5.1",
     "istanbul": "^0.4.2",

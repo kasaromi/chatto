@@ -3,3 +3,8 @@ node_js:
   - "5.5"
 services:
   - redis-server
+addons:
+    code_climate:
+        repo_token: 645d4416762547d1012f17053cd8f712fd304392f281e4afb5ac449328740d32
+after_script:
+    - codeclimate-test-reporter < coverage/lcov.info
