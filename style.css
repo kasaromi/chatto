@@ -64,6 +64,13 @@ body {
     margin-left: 100px;
 }
 
+.btn {
+    background-color: #A593E0;
+    font-family: 'Arvo', serif;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
 input[type="text"] {
   padding: 10px;
   border: none;
