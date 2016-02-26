@@ -44,11 +44,11 @@ function print(unparsedData){
 
 document.getElementById('send').addEventListener('click', function(k) {
     k.preventDefault();
-    getUserAndMsg();
+    sendUserAndMsg();
 });
 
 document.getElementById('mess').addEventListener('keypress', function(e) {
-    if (e.keyCode === 13) getUserAndMsg();
+    if (e.keyCode === 13) sendUserAndMsg();
 });
 
 function sendUserAndMsg(){
