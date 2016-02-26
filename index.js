@@ -51,7 +51,7 @@ document.getElementById('mess').addEventListener('keypress', function(e) {
     if (e.keyCode === 13) getUserAndMsg();
 });
 
-function getUserAndMsg(){
+function sendUserAndMsg(){
     var username = document.getElementById('username').value;
     var msg = document.getElementById('mess').value;
     socket.emit('chat message', username + ': ' + msg);
